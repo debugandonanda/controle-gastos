@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos - República GPs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Controle de Gastos</h1>
+        <input id="descricao" type="text" placeholder="Descrição do Gasto" required>
+        <input id="valor" type="number" placeholder="Valor" required>
+        <input id="data" type="date" required>
+        <button class="button" onclick="adicionarGasto()">Adicionar Gasto</button>
+        
+        <h2>Lista de Gastos</h2>
+        <ul id="lista-gastos"></ul>
+    </div>
+
+    <script>
+        function adicionarGasto() {
+            const descricao = document.getElementById('descricao').value;
+            const valor = document.getElementById('valor').value;
+            const data = document.getElementById('data').value;
+
+            if (descricao && valor && data) {
+                const li = document.createElement('li');
+                li.textContent = `${descricao} - R$ ${valor} - ${data}`;
+                document.getElementById('lista-gastos').appendChild(li);
+
+                // Limpar campos
+                document.getElementById('descricao').value = '';
+                document.getElementById('valor').value = '';
+                document.getElementById('data').value = '';
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+    </script>
+</body>
+</html>
